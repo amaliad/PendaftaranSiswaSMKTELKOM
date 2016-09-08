@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     TextView tvH;
     EditText etn, ettl,ettg, ets;
     CheckBox cbr, cbb, cbpsb;
+    RadioGroup rgjk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         cbr = (CheckBox) findViewById(R.id.checkBoxR);
         cbb = (CheckBox) findViewById(R.id.checkBoxB);
         cbpsb = (CheckBox) findViewById(R.id.checkBoxPSB);
+        rgjk = (RadioGroup) findViewById(R.id.RadioGroup);
         tvH = (TextView) findViewById(R.id.textViewH);
 
         findViewById(R.id.buttonD).setOnClickListener(new View.OnClickListener() {
@@ -45,6 +49,18 @@ public class MainActivity extends AppCompatActivity {
         if (cbb.isChecked()) program += "\t\t -> " +cbb.getText() + "\n";
         if (cbpsb.isChecked()) program += "\t\t -> " +cbpsb.getText() + "\n";
         if (program.length() == startlen) program += "Tidak ada program yang dipilih";
+        String hasil = null;
+        if (rgjk.getCheckedRadioButtonId() != -1) {
+            RadioButton rb = (RadioButton) findViewById(rgjk.getCheckedRadioButtonId());
+            hasil = rb.getText().toString();
+        }
+        if (hasil==null)
+        {
+            builder.append("Anda belum memilih Jenis Kelamin");
+        }
+        else{
+            builder.append("Jenis Kelamin : " + hasil);
+        }
         builder.append("Nama : " + nama + "\n");
         builder.append("Tempat Lahir : " + tempat + "\n");
         builder.append("Tanggal Lahir : " + tanggal + "\n");
