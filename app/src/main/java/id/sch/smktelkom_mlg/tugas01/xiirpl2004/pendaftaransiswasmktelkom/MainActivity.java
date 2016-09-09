@@ -7,6 +7,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etn, ettl,ettg, ets;
     CheckBox cbr, cbb, cbpsb;
     RadioGroup rgjk;
+    Spinner spagama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         cbb = (CheckBox) findViewById(R.id.checkBoxB);
         cbpsb = (CheckBox) findViewById(R.id.checkBoxPSB);
         rgjk = (RadioGroup) findViewById(R.id.RadioGroup);
+        spagama = (Spinner) findViewById(R.id.spinneragama);
         tvH = (TextView) findViewById(R.id.textViewH);
 
         findViewById(R.id.buttonD).setOnClickListener(new View.OnClickListener() {
@@ -43,29 +46,34 @@ public class MainActivity extends AppCompatActivity {
         String tempat = ettl.getText().toString();
         String tanggal = ettg.getText().toString();
         String sekolah = ets.getText().toString();
-        String program = "\tProgram yang diplih \t\n";
+        String program = "Program yang diplih \t\n";
         int startlen = program.length();
-        if (cbr.isChecked()) program += "\t\t -> " +cbr.getText() + "\n";
-        if (cbb.isChecked()) program += "\t\t -> " +cbb.getText() + "\n";
-        if (cbpsb.isChecked()) program += "\t\t -> " +cbpsb.getText() + "\n";
-        if (program.length() == startlen) program += "Tidak ada program yang dipilih";
+        if (cbr.isChecked()) program += "\t  " +cbr.getText() + "\n";
+        if (cbb.isChecked()) program += "\t  " +cbb.getText() + "\n";
+        if (cbpsb.isChecked()) program += "\t  " +cbpsb.getText() + "\n";
+        if (program.length() == startlen) program = "Tidak ada program yang dipilih";
         String hasil = null;
         if (rgjk.getCheckedRadioButtonId() != -1) {
             RadioButton rb = (RadioButton) findViewById(rgjk.getCheckedRadioButtonId());
             hasil = rb.getText().toString();
         }
+        builder.append("\nPendaftarn Siswa Baru SMK TELKOM\n");
+        builder.append(program);
+        builder.append("Nama : " + nama + "\n");
         if (hasil==null)
         {
-            builder.append("Anda belum memilih Jenis Kelamin");
+            builder.append("Anda belum memilih Jenis Kelamin\n");
         }
         else{
-            builder.append("Jenis Kelamin : " + hasil);
+            builder.append("Jenis Kelamin : " + hasil + "\n");
         }
-        builder.append("Nama : " + nama + "\n");
         builder.append("Tempat Lahir : " + tempat + "\n");
         builder.append("Tanggal Lahir : " + tanggal + "\n");
+        builder.append("Agama : ");
+        builder.append(spagama.getSelectedItem().toString() + "\n");
         builder.append("Asal Sekolah : " + sekolah + "\n");
-        builder.append(program);
+
+
         tvH.setText(builder);
     }
 }
