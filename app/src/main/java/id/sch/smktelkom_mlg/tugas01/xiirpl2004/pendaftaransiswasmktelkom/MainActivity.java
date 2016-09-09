@@ -47,35 +47,38 @@ public class MainActivity extends AppCompatActivity {
             String tempat = ettl.getText().toString();
             int tahun = Integer.parseInt(ettg.getText().toString());
             int usia = 2016 - tahun;
-            String sekolah = ets.getText().toString();
-            String program = "Program yang diplih \t\n";
-            int startlen = program.length();
-            if (cbr.isChecked()) program += "\t  " + cbr.getText() + "\n";
-            if (cbb.isChecked()) program += "\t  " + cbb.getText() + "\n";
-            if (cbpsb.isChecked()) program += "\t  " + cbpsb.getText() + "\n";
-            if (program.length() == startlen) program = "Tidak ada program yang dipilih";
             String hasil = null;
             if (rgjk.getCheckedRadioButtonId() != -1) {
                 RadioButton rb = (RadioButton) findViewById(rgjk.getCheckedRadioButtonId());
                 hasil = rb.getText().toString();
             }
-            builder.append("\nPendaftarn Siswa Baru SMK TELKOM\n");
-            builder.append(program);
-            builder.append("Nama : " + nama + "\n");
             if (hasil == null) {
-                builder.append("Anda belum memilih Jenis Kelamin\n");
+                tvH.setText("Anda belum memilih Jenis Kelamin\n");
             } else {
-                builder.append("Jenis Kelamin : " + hasil + "\n");
+                String sekolah = ets.getText().toString();
+                String program = "Program yang diplih \t\n";
+                int startlen = program.length();
+                if (cbr.isChecked()) program += "\t  " + cbr.getText() + "\n";
+                if (cbb.isChecked()) program += "\t  " + cbb.getText() + "\n";
+                if (cbpsb.isChecked()) program += "\t  " + cbpsb.getText() + "\n";
+                if (program.length() == startlen) {
+                    tvH.setText("Tidak ada program yang dipilih\n");
+                } else {
+                    builder.append("\nPENDAFTARN SISWA SMK TELKOM MALANG\n");
+                    builder.append(program);
+                    builder.append("Nama : " + nama + "\n");
+                    builder.append("Jenis Kelamin : " + hasil + "\n");
+                    builder.append("Tempat Lahir : " + tempat + "\n");
+                    builder.append("Tanggal Lahir : " + tahun + "\n");
+                    builder.append("Umur : " + usia + " tahun\n");
+                    builder.append("Agama : ");
+                    builder.append(spagama.getSelectedItem().toString() + "\n");
+                    builder.append("Asal Sekolah : " + sekolah + "\n");
+
+
+                    tvH.setText(builder);
+                }
             }
-            builder.append("Tempat Lahir : " + tempat + "\n");
-            builder.append("Tanggal Lahir : " + tahun + "\n");
-            builder.append("Umur : " + usia + "\n");
-            builder.append("Agama : ");
-            builder.append(spagama.getSelectedItem().toString() + "\n");
-            builder.append("Asal Sekolah : " + sekolah + "\n");
-
-
-            tvH.setText(builder);
         }
     }
 
