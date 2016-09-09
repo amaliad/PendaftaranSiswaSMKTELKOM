@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     tvH.setText("Tidak ada program yang dipilih\n");
                 } else {
                     builder.append("\nPENDAFTARN SISWA SMK TELKOM MALANG\n");
-                    builder.append(program);
+                    builder.append("\n" + program);
                     builder.append("Nama : " + nama + "\n");
                     builder.append("Jenis Kelamin : " + hasil + "\n");
                     builder.append("Tempat Lahir : " + tempat + "\n");

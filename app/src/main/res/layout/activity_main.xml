@@ -25,13 +25,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pendaftaran Siswa Baru"
-            android:layout_gravity="center_horizontal" />
+            android:text="\nPendaftaran Siswa Baru"
+            android:layout_gravity="center_horizontal"
+            style="@style/Base.TextAppearance.AppCompat.Headline" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Program"
+            android:text="\nProgram"
             android:id="@+id/textView" />
 
         <CheckBox
@@ -142,12 +143,14 @@
             android:layout_height="wrap_content"
             android:text="DAFTAR"
             android:id="@+id/buttonD"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:background="@color/abc_search_url_text_selected"
+            android:textColor="@color/abc_secondary_text_material_dark" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hasil"
+            tools:text="Hasil"
             android:id="@+id/textViewH" />
 
     </LinearLayout>
